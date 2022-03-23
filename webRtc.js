@@ -1,4 +1,5 @@
 ceratewebrtc() {
+      navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
       let videoController = document.createElement("video");
       videoController.autoplay = true;
       let screenShortController = document.createElement("canvas")

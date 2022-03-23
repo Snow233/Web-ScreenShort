@@ -8,11 +8,7 @@ ceratewebrtc() {
       let startCapture = async () => {
         let captureStream = null;
         try {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-          // @ts-ignore
-          // 捕获屏幕
           captureStream = await navigator.mediaDevices.getDisplayMedia();
-          // 将MediaStream输出至video标签
           videoController.srcObject = captureStream;
         } catch (err) {
           console.log(err)
@@ -31,9 +27,10 @@ ceratewebrtc() {
                 0
               )
             screenShortController.toBlob(function(blob) {
+               // 此处下载仅为实例操作，实际项目可删除
               let url = URL.createObjectURL(blob);
               let aLink = document.createElement('a')
-              aLink.download = 'fileName.png' // 文件名后缀需要和dataurl表示的相同，否则可能乱码
+              aLink.download = 'fileName.png'
               aLink.href = url
               aLink.click()
               // 停止捕捉屏幕
